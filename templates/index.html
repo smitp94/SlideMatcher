@@ -3,55 +3,34 @@
 <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../static/css/my.css">
 <head>
-  <title>Slip</title>
+  <title>Slide Matcher</title>
 </head>
-<body>
+<body >
   <script src="../static/js/my.js"></script>
 
-  <h2>Slide matcher</h2>
-  <form action="upload" method="post" enctype="multipart/form-data">
+  <div class="file_uploader">
+
+    <h1 style="background-color : #990000; width : 500px; color : white;">Slide Matcher</h1>
+    <form action="upload" method="post" enctype="multipart/form-data">
 
     <div>
+      <p>
+        <h2>Link to video:
+        <input type="file" name="video">
+      </h2>
+      </p>
+      <p>
+      <h2>Link to slides:
+        <input type="file" name="slides">
+      </h2>
+      </p>
 
-      <div class="file-upload" style="width: 45%; float:left">
-        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add pdf Slide</button>
+        <input type="submit" value="Upload">
 
-        <div class="image-upload-wrap">
-          <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-          <div class="drag-text">
-            <h3>Drag and drop slide file</h3>
-          </div>
-        </div>
-        <div class="file-upload-content">
-          <img class="file-upload-image" src="#" alt="your image" />
-          <div class="image-title-wrap">
-            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="file-upload" style="width: 45%; float:right">
-        <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Video file</button>
-
-        <div class="image-upload-wrap">
-          <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-          <div class="drag-text">
-            <h3>Drag and drop a video file</h3>
-          </div>
-        </div>
-        <div class="file-upload-content">
-          <img class="file-upload-image" src="#" alt="your image" />
-          <div class="image-title-wrap">
-            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <br><br>
-    <button class="file-upload-btn" type="submit" style="padding: 0px 0px -10px; ">Upload</button>
+    </form>
+  </div>
 
-
-  </form>
 </body>
 </html>

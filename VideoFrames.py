@@ -10,7 +10,7 @@ frames = []
 
 def keyFrame():
     scene_list = []        # Scenes will be added to this list in detect_scenes().
-    path = 'Files/video.mp4'  # Path to video file.
+    path = 'Files/Lecture1.mp4'  # Path to video file.
 
     # Usually use one detector, but multiple can be used.
     detector_list = [
@@ -45,12 +45,12 @@ def ocr():
     print(text)
     return text
 
-ocr()
+# ocr()
 
 
 def all_frames():
     global frames
-    vidcap = cv2.VideoCapture('Files/video.mp4')
+    vidcap = cv2.VideoCapture('Files/video2.mp4')
     success, image = vidcap.read()
     count = 0
     success = True
@@ -68,5 +68,5 @@ def all_frames():
 
     return find_frames(frames)
 
-# all_frames()
-
+all_frames()
+# keyFrame()

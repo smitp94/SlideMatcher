@@ -3,7 +3,7 @@ from wand.image import Image
 import io
 
 
-def pdf_page_to_png(src_pdf, pagenum = 0, resolution = 72,):
+def pdf_page_to_png(src_pdf, pagenum = 0, resolution = 72):
     """
     Returns specified PDF page as wand.image.Image png.
     :param PyPDF2.PdfFileReader src_pdf: PDF from which to take pages.

@@ -26,6 +26,7 @@ def find_frames(frames):
     video_dir = "Images"
 
     Pdfs = os.listdir(Pdf_dir)
+    Pdfs = ['capture_0.png', 'capture_1.png', 'capture_2.png', 'capture_3.png',]
     # frames = os.listdir(video_dir)
     # frames.sort()
     mapping = {}
@@ -38,7 +39,7 @@ def find_frames(frames):
     for frame in frames:
         s = ssim(Pdf_dir + "/" + Pdfs[i], video_dir + "/" + frame)
         # if max < s:
-        if s > 0.85:
+        if s > 0.80:
             max = s
             pdf = Pdfs[i]
             i += 1

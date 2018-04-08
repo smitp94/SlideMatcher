@@ -2,11 +2,24 @@
 <html>
 <head>
   <title>Slide Matcher</title>
-  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-</head>
-<body>
-<script>
 
+</head>
+ <body onload="start()">
+<script>
+function start(){
+var vid = document.getElementById("myVideo");
+var slide = document.getElementById("slide");
+ var data = JSON.parse('{{ result[1]|tojson|safe }}');
+ if(data.hasOwnProperty("slide_0.png")){
+vid.src = "../static/Pdf_Images/video.mp4";
+slide.src = "../static/Pdf_Images/slide_0.png";
+}
+else{
+vid.src = "../static/Pdf_Images/video2.mp4";
+slide.src = "../static/Pdf_Images/capture_0.png";
+}
+
+}
 
 function setCurTime() {
 var vid = document.getElementById("myVideo");
@@ -20,43 +33,76 @@ function change_next(){
   var data = JSON.parse('{{ result[1]|tojson|safe }}');
   var vid = document.getElementById("myVideo");
 
-  var slide = document.getElementById("slide");
-  var srcc = slide.src;
-  var pos = srcc.lastIndexOf("_");
-  var no = Number(srcc.slice(pos+1, -4)) + 1;
-  if( no < {{ result[2] }} ){
-    slide.src = srcc.slice(0,pos+1)+String(no)+".png";
-    vid.currentTime = data["slide_"+String(no)+".png"];
+    if(data.hasOwnProperty("slide_0.png")){
+        console.log("Slide");
+        var slide = document.getElementById("slide");
+          var srcc = slide.src;
+          var pos = srcc.lastIndexOf("_");
+          var no = Number(srcc.slice(pos+1, -4)) + 1;
+          if( no < {{ result[2] }} ){
+            slide.src = srcc.slice(0,pos+1)+String(no)+".png";
+            vid.currentTime = data["slide_"+String(no)+".png"];
+            }
 }
+else{
+
+    var slide = document.getElementById("slide");
+          var srcc = slide.src;
+          var pos = srcc.lastIndexOf("_");
+          var no = Number(srcc.slice(pos+1, -4)) + 1;
+          if( no < {{ result[2] }} ){
+            slide.src = srcc.slice(0,pos+1)+String(no)+".png";
+            vid.currentTime = data["capture_"+String(no)+".png"];
+            }
+
+    }
 
 }
 
 function change_prev(){
 var data = JSON.parse('{{ result[1]|tojson|safe }}');
 var vid = document.getElementById("myVideo");
-var slide = document.getElementById("slide");
-var srcc = slide.src;
-var pos = srcc.lastIndexOf("_");
-var no = Number(srcc.slice(pos+1, -4)) - 1;
-if( no >= 0 ){
-slide.src = srcc.slice(0,pos+1)+String(no)+".png";
-vid.currentTime = data["slide_"+String(no)+".png"];
+
+    if(data.hasOwnProperty("slide_0.png")){
+        console.log("Slide");
+        var slide = document.getElementById("slide");
+          var srcc = slide.src;
+          var pos = srcc.lastIndexOf("_");
+          var no = Number(srcc.slice(pos+1, -4)) - 1;
+          if( no >= 0 ){
+            slide.src = srcc.slice(0,pos+1)+String(no)+".png";
+            vid.currentTime = data["slide_"+String(no)+".png"];
+            }
+}
+else{
+
+    var slide = document.getElementById("slide");
+          var srcc = slide.src;
+          var pos = srcc.lastIndexOf("_");
+          var no = Number(srcc.slice(pos+1, -4)) - 1;
+          if( no >= 0 ){
+            slide.src = srcc.slice(0,pos+1)+String(no)+".png";
+            vid.currentTime = data["capture_"+String(no)+".png"];
+            }
+
+    }
 }
 
-}
+
 
 </script>
-
     <div class="frame">
 
-      <img id = "slide" src="../static/Pdf_Images/slide_0.png" height="70%" width="50%" style="float:left;">
-
-
-      <video id="myVideo" width="50%" height="80%" style="float:right;" controls>
-      <source src="../static/Pdf_Images/video.mp4" type="video/mp4">
+    <video id="myVideo" width="50%" height="80%" style="float:right;" controls>
+      <source  type="video/mp4">
 
       Your browser does not support the video tag.
     </video>
+
+      <img id = "slide" height="70%" width="50%" style="float:left;">
+
+
+
     </div>
 
 
