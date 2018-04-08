@@ -29,19 +29,18 @@ def Pdf_Parse():
     src_pdf = PyPDF2.PdfFileReader(file)
 
     # What follows is a lookup table of page numbers within sample_log.pdf and the corresponding filenames.
-    pages = [{"pagenum": 1,  "filename": "samplelog_jrs0019_p1"},
-             {"pagenum": 2,  "filename": "samplelog_jrs0019_p2"}]
+    npages =src_pdf.getNumPages()
 
-    # Convert each page to a png image.
-    for page in pages:
-        big_filename = "Pdf_Images/" + page["filename"] + ".png"
-        small_filename = "Pdf_Images/" + page["filename"] + "_small" + ".png"
+    for i in range(0,npages):
+        big_filename = "Pdf_Images/" + "slide_" + str(i) + ".png"
+        # small_filename = "Pdf_Images/" + page["filename"] + "_small" + ".png"
 
-        img = pdf_page_to_png(src_pdf, pagenum = page["pagenum"], resolution = 300)
+        img = pdf_page_to_png(src_pdf, pagenum = i, resolution = 300)
         img.save(filename = big_filename)
 
         # Ensmallen
-        img.transform("", "200")
-        img.save(filename = small_filename)
+        # img.transform("", "200")
+        # img.save(filename = small_filename)
 
 
+Pdf_Parse()
