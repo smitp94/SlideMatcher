@@ -2,9 +2,6 @@ import cv2
 from skimage.measure import compare_ssim
 import os
 
-image1 = "Images/frame_1.jpg"
-image2 = "Pdf_Images/samplelog_jrs0019_p1.png"
-
 
 def ssim(grayA, grayB):
     imageA = cv2.imread(grayA)
@@ -52,6 +49,7 @@ def find_frames(frames):
                 break
 
     print(mapping)
+    return mapping
 
 
 # find_frames()

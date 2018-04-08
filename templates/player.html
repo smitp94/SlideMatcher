@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slip</title>
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+<body>
+<script>
+var vid = document.getElementById("kon");
+vid.playbackRate = 0.4;
+
+vid.onended = function() {
+  setTimeout(function(){
+    vid.play(); //will play after 10 seconds when video is ended
+  }, 10000);
+};
+vid.play();
+
+</script>
+  <center>
+    <div class="frame">
+      <img src="../static/Pdf_Images/{{ result[0][0] }}" height="70%" width="40%">
+      <img src="../static/Pdf_Images/{{ result[0][0] }}" height="70%" width="40%">
+    </div>
+
+    <div class="button">
+      <table width="60%">
+        <tr>
+          <td class="left"><img class="back_button" src="../buttons/back_button.png" height="30"></td>
+          <td class="center">
+            <img class="video_button" src="../buttons/video_button.png" height="30">
+            <img class="slide_button" src="../buttons/slide_button.png" height="30">
+          </td>
+          <td class="right"><img class="next_button" src="../buttons/next_button.png" height="30"></td>
+        </tr>
+      </table>
+    </div>
+  </center>
+
+  <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="../static/js/templates.js"></script>
+  <script type="text/javascript" src="../static/js/script.js"></script>
+</body>
+</html>

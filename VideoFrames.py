@@ -66,6 +66,7 @@ def all_frames():
         count += 1
     # print(frames)
 
+    return find_frames(frames)
+
 all_frames()
-find_frames(frames)
 
