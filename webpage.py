@@ -20,10 +20,10 @@ def index():
 
 @app.route('/map')
 def map():
-    # dic = all_frames
-
-    dic = {'slide_3.png': 69300, 'slide_1.png': 15300, 'slide_0.png': 0, 'slide_2.png': 55800}
-    l = [list(dic.keys()),dic]
+    # dic = all_frames()
+    #
+    dic = {'slide_0.png': 0.0, 'slide_3.png': 308.0, 'slide_1.png': 68.0, 'slide_2.png': 248.0}
+    l = [list(dic.keys()), dic, len(dic.keys())]
     return render_template('player.html', result=l)
 
 

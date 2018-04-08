@@ -31,13 +31,13 @@ def keyFrame():
 
 
 def ocr():
-    path = "test/"
-    file_name = "screen.png"
+    path = "Pdf_Images/"
+    file_name = "slide_0.png"
     file_OCR = path + file_name
     image = cv2.imread(file_OCR)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    filename = "test/{}1.png".format(file_name)
+    filename = "Pdf_Images/{}1.png".format(file_name)
     cv2.imwrite(filename, gray)
 
     text = pytesseract.image_to_string(Image.open(filename))
@@ -45,7 +45,7 @@ def ocr():
     print(text)
     return text
 
-# keyFrame()
+ocr()
 
 
 def all_frames():
@@ -68,5 +68,5 @@ def all_frames():
 
     return find_frames(frames)
 
-all_frames()
+# all_frames()
 

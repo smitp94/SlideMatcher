@@ -1,44 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Slip</title>
+  <title>Slide Matcher</title>
   <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 </head>
 <body>
 <script>
-var vid = document.getElementById("kon");
+
+
+function setCurTime() {
+var vid = document.getElementById("myVideo");
 vid.playbackRate = 0.4;
 
-vid.onended = function() {
-  setTimeout(function(){
-    vid.play(); //will play after 10 seconds when video is ended
-  }, 10000);
-};
-vid.play();
+    vid.currentTime = {{ result[1][result[0][1]] }};
+}
+
+function change_next(){
+
+  var data = JSON.parse('{{ result[1]|tojson|safe }}');
+  var vid = document.getElementById("myVideo");
+
+  var slide = document.getElementById("slide");
+  var srcc = slide.src;
+  var pos = srcc.lastIndexOf("_");
+  var no = Number(srcc.slice(pos+1, -4)) + 1;
+  if( no < {{ result[2] }} ){
+    slide.src = srcc.slice(0,pos+1)+String(no)+".png";
+    vid.currentTime = data["slide_"+String(no)+".png"];
+}
+
+}
+
+function change_prev(){
+var data = JSON.parse('{{ result[1]|tojson|safe }}');
+var vid = document.getElementById("myVideo");
+var slide = document.getElementById("slide");
+var srcc = slide.src;
+var pos = srcc.lastIndexOf("_");
+var no = Number(srcc.slice(pos+1, -4)) - 1;
+if( no >= 0 ){
+slide.src = srcc.slice(0,pos+1)+String(no)+".png";
+vid.currentTime = data["slide_"+String(no)+".png"];
+}
+
+}
 
 </script>
-  <center>
+
     <div class="frame">
-      <img src="../static/Pdf_Images/{{ result[0][0] }}" height="70%" width="40%">
-      <img src="../static/Pdf_Images/{{ result[0][0] }}" height="70%" width="40%">
+
+      <img id = "slide" src="../static/Pdf_Images/slide_0.png" height="70%" width="50%" style="float:left;">
+
+
+      <video id="myVideo" width="50%" height="80%" style="float:right;" controls>
+      <source src="../static/Pdf_Images/video.mp4" type="video/mp4">
+
+      Your browser does not support the video tag.
+    </video>
     </div>
 
-    <div class="button">
-      <table width="60%">
+
+
+ <div class="button"  >
+      <table width="100%">
         <tr>
-          <td class="left"><img class="back_button" src="../buttons/back_button.png" height="30"></td>
-          <td class="center">
-            <img class="video_button" src="../buttons/video_button.png" height="30">
-            <img class="slide_button" src="../buttons/slide_button.png" height="30">
-          </td>
-          <td class="right"><img class="next_button" src="../buttons/next_button.png" height="30"></td>
+          <td class="left"><img  onclick="change_prev()" class="back_button" src="../static/buttons/back_button.png" height="30"></td>
+
+          <td class="right"><img  onclick="change_next()" class="next_button" src="../static/buttons/next_button.png" height="30"></td>
         </tr>
       </table>
     </div>
-  </center>
 
-  <script type="text/javascript" src="../static/js/jquery.min.js"></script>
-  <script type="text/javascript" src="../static/js/templates.js"></script>
-  <script type="text/javascript" src="../static/js/script.js"></script>
+  <!--<script type="text/javascript" src="../static/js/jquery.min.js"></script>-->
+  <!--<script type="text/javascript" src="../static/js/templates.js"></script>-->
+  <!--<script type="text/javascript" src="../static/js/script.js"></script>-->
 </body>
 </html>

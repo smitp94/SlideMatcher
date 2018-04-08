@@ -43,7 +43,7 @@ def find_frames(frames):
             pdf = Pdfs[i]
             i += 1
             vid = frame
-            mapping[pdf] = int(vid[5:-4])*15
+            mapping[pdf] = int(vid[5:-4])/15
             print(pdf)
             if i > len(Pdfs)-1:
                 break
