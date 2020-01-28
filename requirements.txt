@@ -54,7 +54,7 @@ scikit-learn==0.19.1
 scipy==1.0.1
 six==1.11.0
 SpeechRecognition==3.8.1
-tensorflow==1.5.0
+tensorflow==1.15.2
 tensorflow-tensorboard==1.5.1
 uritemplate==3.0.0
 urllib3==1.22
